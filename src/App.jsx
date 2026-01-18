@@ -16,13 +16,13 @@ const App = () => {
   }
 
   return (
-    <main className='light w-screen flex h-screen bg-(--Background) p-3'>
+    <main className='dark w-screen flex h-screen bg-(--Background) p-3'>
       <div className='w-fit relative'>
         <Sidebar createList={createList} setCreateList={setCreateList} lists={lists} randomColor={randomColor} />
         <MobileSidebar createList={createList} setCreateList={setCreateList} lists={lists} randomColor={randomColor} />
-        <CreateList createList={createList} setCreateList={setCreateList} inputValue={inputValue} setInputValue={setInputValue} lists={lists} setLists={setLists} />
       </div>
-      <div className='w-full h-full ml-12 lg:ml-3'>
+      <CreateList createList={createList} setCreateList={setCreateList} inputValue={inputValue} setInputValue={setInputValue} lists={lists} setLists={setLists} />
+      <div className='w-full h-full ml-12 lg:ml-6'>
         <Upcoming />
       </div>
     </main>
