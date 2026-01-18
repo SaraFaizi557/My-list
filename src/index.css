@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=TikTok+Sans:opsz,wght@12..36,300..900&display=swap');
+@import "tailwindcss";
+
+:root {
+  --Luckiest-family: "Luckiest Guy", cursive;
+  --TikTok-family: "TikTok Sans", sans-serif;
+}
+
+.light {
+  --Background: #FFFFFF;
+  --Surface: #F8FAFC;
+  --Border: #E5E7EB;
+  --Text-Primary: #020617;
+  --Text-Secondary: #64748B;
+  --Divider: #E2E8F0;
+  --Red: #ff0000d0;
+}
+
+.dark {
+  --Background: #0B0B0B;
+  --Surface: #111111;
+  --Border: #1F1F1F;
+  --Text-Primary: #FFFFFF;
+  --Text-Secondary: #A1A1AA;
+  --Divider: #262626;
+  --Red: #ff4a4ad0;
+}
+
+#right {
+  scrollbar-width:thin;
+  scrollbar-color: var(--Border) transparent;
+}
