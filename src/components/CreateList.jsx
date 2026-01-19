@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-const CreateList = ({ createList, setCreateList, inputValue, setInputValue, setLists, lists }) => {
+const CreateList = ({ createList, setCreateList, inputValue, setInputValue, setLists, lists, inputRef }) => {
     if (!createList) return null
 
     const [error, setError] = useState(false)
@@ -46,7 +46,7 @@ const CreateList = ({ createList, setCreateList, inputValue, setInputValue, setL
                 <div className='flex flex-col gap-2.5'>
                     <p className='text-(--Text-Primary)/80 text-sm'>Give your list a name</p>
                     <div className='flex flex-col'>
-                        <input onKeyDown={(e) => e.key === "Enter" && addItem()} onChange={(e) => {
+                        <input ref={inputRef} onKeyDown={(e) => e.key === "Enter" && addItem()} onChange={(e) => {
                             setInputValue(e.target.value)
                             setError(false)
                             setError3(false)

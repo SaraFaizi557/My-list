@@ -57,4 +57,6 @@ export const palette = [
   "#FBBF24"  // Warm Gold
 ]
 
-
+export const dueDate = [
+    "Tomorrow", "This Week", "Next Week", "Later",
+]

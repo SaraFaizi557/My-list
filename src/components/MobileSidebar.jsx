@@ -2,16 +2,15 @@ import { Plus, Search, TextAlignJustify, X } from 'lucide-react'
 import { useState } from 'react'
 import { tasks } from '../constant'
 
-const MobileSidebar = ({ setCreateList, lists, randomColor }) => {
+const MobileSidebar = ({ openMobileMenu, setOpenMobileMenu, setCreateList, lists, randomColor }) => {
     const [isActive, setIsActive] = useState(false)
     const [activeId, setActiveId] = useState(tasks[0]?.id ?? null)
-    const [openMobileMenu, setOpenMobileMenu] = useState(false)
 
     return (
         <>
-            {!openMobileMenu && <TextAlignJustify onClick={() => {
+            {/* {!openMobileMenu && <TextAlignJustify onClick={() => {
                 setOpenMobileMenu((prev) => !prev)
-            }} className='lg:hidden absolute flex ml-2 translate-y-1 select-none w-5 h-5 cursor-pointer text-(--Text-Secondary)' />}
+            }} className='lg:hidden absolute flex ml-2 translate-y-1 select-none w-5 h-5 cursor-pointer text-(--Text-Secondary)' />} */}
             <div className={["absolute lg:hidden flex flex-col justify-between w-60 p-3 rounded-xl h-full bg-(--Surface) transition-all duration-200 ease-out", openMobileMenu ? "translate-x-0" : "-translate-x-90"].join(" ")}>
                 <div className='flex flex-col gap-3.5'>
                     <div className='flex items-center justify-between'>
@@ -19,7 +18,7 @@ const MobileSidebar = ({ setCreateList, lists, randomColor }) => {
                             <h1 className='text-(--Text-Primary) [font-family:var(--Luckiest-family)] text-lg'>My List</h1>
                         </div>
                         <X onClick={() => {
-                            setOpenMobileMenu((prev) => !prev)
+                            setOpenMobileMenu(false)
                         }} strokeWidth={2.1} className='flex w-5 h-5 cursor-pointer text-(--Text-Secondary)' />
                     </div>
                     <div className={`${isActive ? "bg-(--Border)" : "bg-(--Surface)"} flex w-full items-center p-2 rounded-lg gap-2 hover:bg-(--Border) cursor-pointer [font-family:var(--TikTok-family)] transition-all duration-400`}>
