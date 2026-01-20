@@ -8,9 +8,6 @@ const MobileSidebar = ({ openMobileMenu, setOpenMobileMenu, setCreateList, lists
 
     return (
         <>
-            {/* {!openMobileMenu && <TextAlignJustify onClick={() => {
-                setOpenMobileMenu((prev) => !prev)
-            }} className='lg:hidden absolute flex ml-2 translate-y-1 select-none w-5 h-5 cursor-pointer text-(--Text-Secondary)' />} */}
             <div className={["absolute lg:hidden flex flex-col justify-between w-60 p-3 rounded-xl h-full bg-(--Surface) transition-all duration-200 ease-out", openMobileMenu ? "translate-x-0" : "-translate-x-90"].join(" ")}>
                 <div className='flex flex-col gap-3.5'>
                     <div className='flex items-center justify-between'>

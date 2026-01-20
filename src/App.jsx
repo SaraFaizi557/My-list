@@ -7,8 +7,11 @@ const App = () => {
   const [openMobileMenu, setOpenMobileMenu] = useState(false)
   const [createList, setCreateList] = useState(false)
   const [inputValue, setInputValue] = useState("")
+  const [taskValue, setTaskValue] = useState("")
   const [lists, setLists] = useState([])
+  const [addTask, setAddTask] = useState([])
   const [addList, setAddList] = useState(false)
+  const [taskNum, setTaskNum] = useState(null)
   const inputRef = useRef(null)
 
   const randomColor = (str) => {
@@ -24,15 +27,15 @@ const App = () => {
   })
 
   return (
-    <main className='dark w-screen flex h-screen bg-(--Background) p-3'>
+    <main className='light w-screen flex h-screen bg-(--Background) p-3'>
       <div className='w-fit relative'>
         <Sidebar createList={createList} setCreateList={setCreateList} lists={lists} randomColor={randomColor} />
         <MobileSidebar createList={createList} setCreateList={setCreateList} lists={lists} randomColor={randomColor} openMobileMenu={openMobileMenu} setOpenMobileMenu={setOpenMobileMenu} />
       </div>
       <CreateList createList={createList} setCreateList={setCreateList} inputValue={inputValue} setInputValue={setInputValue} lists={lists} setLists={setLists} inputRef={inputRef} />
-      {addList && <AddList lists={lists} setAddList={setAddList} randomColor={randomColor} />}
+      {addList && <AddList lists={lists} setAddList={setAddList} randomColor={randomColor} taskValue={taskValue} setTaskValue={setTaskValue} addTask={addTask} setAddTask={setAddTask} setTaskNum={setTaskNum} />}
       <div className='w-full h-full flex justify-between lg:ml-6'>
-        <Upcoming setOpenMobileMenu={setOpenMobileMenu} setAddList={setAddList} />
+        <Upcoming setOpenMobileMenu={setOpenMobileMenu} setAddList={setAddList} addTask={addTask} taskNum={taskNum} setTaskNum={setTaskNum} />
       </div>
     </main>
   )

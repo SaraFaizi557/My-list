@@ -2,12 +2,35 @@ import { CalendarFold, CalendarX, ChevronDown } from 'lucide-react'
 import { useMemo, useState } from 'react'
 import { dueDate } from '../constant'
 
-const AddList = ({ lists, randomColor, setAddList }) => {
+const AddList = ({ lists, randomColor, setAddList, taskValue, setTaskValue, addTask, setAddTask, setTaskNum }) => {
     const [openlists, setOpenlists] = useState(false)
     const [dateMenu, setDateMenu] = useState(false)
     const firstName = useMemo(() => (lists.length ? lists[0] : null), [lists])
     const [selectedName, setSelectedName] = useState(firstName)
     const [date, setDate] = useState(dueDate[0])
+    const [error, setError] = useState(false)
+
+    const addTasks = () => {
+        const task = taskValue.trim()
+        if (!task) {
+            setError(true)
+            return;
+        }
+
+        setAddTask((prev) => [
+            ...prev,
+            {
+                id: crypto.randomUUID(),
+                task,
+            }
+        ])
+
+        const num = 0
+        
+        setTaskNum(prev => prev + 1)
+        setTaskValue("")
+        setAddList(false);
+    }
 
     return (
         <div onClick={() => {
@@ -19,7 +42,13 @@ const AddList = ({ lists, randomColor, setAddList }) => {
                 setDateMenu(false)
             }} className="w-full sm:w-110 h-fit p-3 flex flex-col gap-4 rounded-xl bg-(--Border) border border-(--Border)/90 shadow inset-0 transition-all duration-200 ease-out">
                 <h5 className='font-medium text-(--Text-Primary) text-md'>Task:</h5>
-                <input type="text" placeholder='Enter task' className={` "border border-(--Red)/80 bg-(--Surface)/15 outline-none rounded-lg px-2.5 py-1.5 text-(--Text-Primary)/90`} />
+                <div className='flex flex-col'>
+                    <input onKeyDown={(e) => e.key === "Enter" && addTasks()} onChange={(e) => {
+                        setTaskValue(e.target.value)
+                        setError(false)
+                    }} type="text" value={taskValue} placeholder='Enter task' className={`${error ? "border border-(--Red)/80" : ""} bg-(--Surface)/15 outline-none rounded-lg px-2.5 py-1.5 text-(--Text-Primary)/90`} />
+                    {error && <p className='text-(--Red)/85 text-sm ml-1'>Task is required</p>}
+                </div>
                 <div className='flex flex-col gap-4 w-full sm:w-75'>
                     <div className='flex items-center justify-between ml-2'>
                         <p className='text-(--Text-Primary)/80 text-sm font-medium'>List</p>
@@ -66,7 +95,7 @@ const AddList = ({ lists, randomColor, setAddList }) => {
                             </div>
                             {dateMenu && <div onClick={() => {
                                 e.stopPropagation()
-                            }} className='absolute min-w-full max-w-27 bg-(--Border) shadow mt-1 rounded-md p-2 text-black'>
+                            }} className='absolute min-w-full max-w-27 bg-(--Border) shadow mt-2 rounded-md p-2 text-black'>
                                 <div className='flex flex-col gap-1'>
                                     {dueDate.map((list) => {
                                         return (
@@ -87,7 +116,7 @@ const AddList = ({ lists, randomColor, setAddList }) => {
                     <button onClick={() => {
                         setAddList(false)
                     }} className='px-3 py-1 rounded-xl text-(--Text-Primary)/80 hover:text-(--Text-Primary)/90 cursor-pointer transition-all duration-400'>Cancel</button>
-                    <button className='px-3 py-1 rounded-2xl bg-(--Text-Primary)/8 hover:bg-(--Text-Primary)/11 border border-(--Text-Primary)/3 text-(--Text-Primary)/80 hover:text-(--Text-Primary)/90 cursor-pointer transition-all duration-400'>Create</button>
+                    <button onClick={() => addTasks()} className='px-3 py-1 rounded-2xl bg-(--Text-Primary)/8 hover:bg-(--Text-Primary)/11 border border-(--Text-Primary)/3 text-(--Text-Primary)/80 hover:text-(--Text-Primary)/90 cursor-pointer transition-all duration-400'>Create</button>
                 </div>
             </div>
         </div>
