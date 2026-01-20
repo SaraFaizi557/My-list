@@ -1,6 +1,7 @@
 import { Plus, Search, TextAlignJustify, X } from 'lucide-react'
 import { useState } from 'react'
 import { tasks } from '../constant'
+import { NavLink } from 'react-router-dom'
 
 const MobileSidebar = ({ openMobileMenu, setOpenMobileMenu, setCreateList, lists, randomColor }) => {
     const [isActive, setIsActive] = useState(false)
@@ -27,15 +28,17 @@ const MobileSidebar = ({ openMobileMenu, setOpenMobileMenu, setCreateList, lists
                     </div>
                     <div className='flex flex-col gap-0.5 [font-family:var(--TikTok-family)] mt-3'>
                         <h5 className='text-(--Text-Primary)/80 mb-2 text-xs font-semibold uppercase'>Tasks</h5>
-                        {tasks.map(({ id, Icon, title }) => {
+                        {tasks.map(({ id, Icon, title, link }) => {
                             const isActive = id === activeId;
                             if (id >= 5) return null;
 
                             return (
-                                <div onClick={() => setActiveId(id)} key={id} className={`${isActive ? "bg-(--Border)/70" : ""} flex px-2.5 py-2 cursor-pointer rounded-md hover:bg-(--Border)/70 items-center gap-4 transition-all duration-400`}>
-                                    <Icon strokeWidth={2.5} className='w-4 h-4 text-(--Text-Primary)/90' />
-                                    <p className={`${isActive ? "font-medium" : "font-normal"} text-(--Text-Primary) text-sm`}>{title}</p>
-                                </div>
+                                <NavLink to={link}>
+                                    <div onClick={() => setActiveId(id)} key={id} className={`${isActive ? "bg-(--Border)/70" : ""} flex px-2.5 py-2 cursor-pointer rounded-md hover:bg-(--Border)/70 items-center gap-4 transition-all duration-400`}>
+                                        <Icon strokeWidth={2.5} className='w-4 h-4 text-(--Text-Primary)/90' />
+                                        <p className={`${isActive ? "font-medium" : "font-normal"} text-(--Text-Primary) text-sm`}>{title}</p>
+                                    </div>
+                                </NavLink>
                             )
                         })}
                     </div>
@@ -45,12 +48,12 @@ const MobileSidebar = ({ openMobileMenu, setOpenMobileMenu, setCreateList, lists
                         <div className='max-h-[20vh] overflow-x-auto flex flex-col gap-0.5'>
                             {lists.map((list) => (
 
-                            <div key={list.id} className='max-h-10 flex px-2.5 py-2 cursor-pointer rounded-md hover:bg-(--Border)/70 items-center gap-4 transition-all duration-400'>
-                                <div className='w-4 h-4 rounded' style={{ backgroundColor: randomColor(list.name) }}>
+                                <div key={list.id} className='max-h-10 flex px-2.5 py-2 cursor-pointer rounded-md hover:bg-(--Border)/70 items-center gap-4 transition-all duration-400'>
+                                    <div className='w-4 h-4 rounded' style={{ backgroundColor: randomColor(list.name) }}>
+                                    </div>
+                                    <p className='text-(--Text-Primary) text-sm capitalize'>{list.name}</p>
                                 </div>
-                                <p className='text-(--Text-Primary) text-sm capitalize'>{list.name}</p>
-                            </div>
-                        ))}
+                            ))}
                         </div>
                         <div onClick={() => {
                             setCreateList(true)

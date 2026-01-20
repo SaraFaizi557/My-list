@@ -5,11 +5,13 @@ export const tasks = [
         id: 1,
         title: "Upcoming",
         Icon: ChevronsRight,
+        link: "/",
     },
     {
         id: 2,
         title: "Today",
         Icon: ListCheck,
+        link: "/today",
     },
     {
         id: 3,
@@ -35,15 +37,6 @@ export const tasks = [
 ]
 
 export const palette = [
-  "#6366F1", // Indigo
-  "#8B5CF6", // Violet
-  "#EC4899", // Pink
-  "#F43F5E", // Rose
-  "#F97316", // Orange
-  "#F59E0B", // Amber
-  "#EAB308", // Yellow
-  "#84CC16", // Lime
-  "#22C55E", // Green
   "#10B981", // Emerald
   "#14B8A6", // Teal
   "#06B6D4", // Cyan
@@ -54,7 +47,16 @@ export const palette = [
   "#A855F7", // Purple
   "#D946EF", // Fuchsia
   "#FB7185", // Soft Red
-  "#FBBF24"  // Warm Gold
+  "#FBBF24",  // Warm Gold
+  "#6366F1", // Indigo
+  "#8B5CF6", // Violet
+  "#EC4899", // Pink
+  "#F43F5E", // Rose
+  "#F97316", // Orange
+  "#F59E0B", // Amber
+  "#EAB308", // Yellow
+  "#84CC16", // Lime
+  "#22C55E", // Green
 ]
 
 export const dueDate = [
