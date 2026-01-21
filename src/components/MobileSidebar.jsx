@@ -33,8 +33,11 @@ const MobileSidebar = ({ openMobileMenu, setOpenMobileMenu, setCreateList, lists
                             if (id >= 5) return null;
 
                             return (
-                                <NavLink to={link}>
-                                    <div onClick={() => setActiveId(id)} key={id} className={`${isActive ? "bg-(--Border)/70" : ""} flex px-2.5 py-2 cursor-pointer rounded-md hover:bg-(--Border)/70 items-center gap-4 transition-all duration-400`}>
+                                <NavLink key={id} to={link}>
+                                    <div onClick={() => {
+                                        setActiveId(id)
+                                        setOpenMobileMenu(false)
+                                    }} className={`${isActive ? "bg-(--Border)/70" : ""} flex px-2.5 py-2 cursor-pointer rounded-md hover:bg-(--Border)/70 items-center gap-4 transition-all duration-400`}>
                                         <Icon strokeWidth={2.5} className='w-4 h-4 text-(--Text-Primary)/90' />
                                         <p className={`${isActive ? "font-medium" : "font-normal"} text-(--Text-Primary) text-sm`}>{title}</p>
                                     </div>
@@ -64,14 +67,19 @@ const MobileSidebar = ({ openMobileMenu, setOpenMobileMenu, setCreateList, lists
                     </div>
                 </div>
                 <div className='flex flex-col gap-0.5'>
-                    {tasks.map(({ id, Icon, title }) => {
+                    {tasks.map(({ id, Icon, title, link }) => {
                         const isActive = id === activeId;
 
-                        if (id === 5 || id === 6) return (
-                            <div onClick={() => setActiveId(id)} key={id} className={`${isActive ? "bg-(--Border)/70" : ""} ${id === 6 ? "hover:bg-(--Red)/14" : "hover:bg-(--Border)/70"} flex px-2.5 py-2 cursor-pointer rounded-md items-center gap-4 transition-all duration-400`}>
-                                <Icon strokeWidth={2.5} className={`w-4 h-4 ${id === 6 ? "text-(--Red)" : "text-(--Text-Primary)/90"}`} />
-                                <p className={`${isActive ? "font-medium" : "font-normal"} ${id === 6 ? "text-(--Red)" : "text-(--Text-Primary)"} text-sm`}>{title}</p>
-                            </div>
+                        if (id === 5) return (
+                            <NavLink key={id} to={link}>
+                                <div onClick={() => {
+                                    setActiveId(id)
+                                    setOpenMobileMenu(false)
+                                }} className={`${isActive ? "bg-(--Border)/70" : ""} hover:bg-(--Border)/70 flex px-2.5 py-2 cursor-pointer rounded-md items-center gap-4 transition-all duration-400`}>
+                                    <Icon strokeWidth={2.5} className='w-4 h-4 text-(--Text-Primary)/90' />
+                                    <p className={`${isActive ? "font-medium" : "font-normal"} text-(--Text-Primary) text-sm`}>{title}</p>
+                                </div>
+                            </NavLink>
                         )
                     })}
                 </div>

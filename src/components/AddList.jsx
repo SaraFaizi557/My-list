@@ -1,12 +1,8 @@
-import { CalendarFold, CalendarX, ChevronDown } from 'lucide-react'
-import { useMemo, useState } from 'react'
+import { CalendarFold, ChevronDown } from 'lucide-react'
+import { useState } from 'react'
 import { dueDate } from '../constant'
 
-const AddList = ({ lists, randomColor, setAddList, taskValue, setTaskValue, addTask, setAddTask, setTaskNum, date, setDate, secInputRef }) => {
-    const [openlists, setOpenlists] = useState(false)
-    const [dateMenu, setDateMenu] = useState(false)
-    const firstName = useMemo(() => (lists.length ? lists[0] : null), [lists])
-    const [selectedName, setSelectedName] = useState(firstName)
+const AddList = ({ lists, randomColor, setAddList, taskValue, setTaskValue, addTask, setAddTask, setTaskNum, date, setDate, secInputRef, dateMenu, setDateMenu, openlists, setOpenlists, selectedName, setSelectedName }) => {
     const [error, setError] = useState(false)
     const [error2, setError2] = useState(false)
 
@@ -50,21 +46,21 @@ const AddList = ({ lists, randomColor, setAddList, taskValue, setTaskValue, addT
                 setOpenlists(false)
                 setDateMenu(false)
             }} className="w-full sm:w-110 h-fit p-3 flex flex-col gap-4 rounded-xl bg-(--Border) border border-(--Border)/90 shadow inset-0 transition-all duration-200 ease-out">
-                <h5 className='font-medium text-(--Text-Primary) text-md'>Task:</h5>
+                <h5 className='font-medium text-(--Text-Primary) text-md'>Create Task</h5>
                 <div className='flex flex-col'>
                     <input ref={secInputRef} onKeyDown={(e) => e.key === "Enter" && addTasks()} onChange={(e) => {
                         setTaskValue(e.target.value)
                         setError(false)
                         if (e.target.value === "") {
-                                setError2(false)
+                            setError2(false)
                         }
-                    }} type="text" value={taskValue} placeholder='Enter task' className={`${error || error2 ? "border border-(--Red)/80" : ""} bg-(--Surface)/15 outline-none rounded-lg px-2.5 py-1.5 text-(--Text-Primary)/90`} />
+                    }} type="text" value={taskValue} placeholder='Enter task title' className={`${error || error2 ? "border border-(--Red)/80" : ""} bg-(--Surface)/15 outline-none rounded-lg px-2.5 py-1.5 text-(--Text-Primary)/90`} />
                     {error && <p className='text-(--Red)/85 text-sm ml-1'>Task is required</p>}
-                    {error2 && <p className='text-(--Red)/85 text-sm ml-1'>This task is already exists</p>}
+                    {error2 && <p className='text-(--Red)/85 text-sm ml-1'>This task already exists</p>}
                 </div>
                 <div className='flex flex-col gap-4 w-full sm:w-75'>
                     <div className='flex items-center justify-between ml-2'>
-                        <p className='text-(--Text-Primary)/80 text-sm font-medium'>List</p>
+                        <p className='text-(--Text-Primary)/80 text-sm font-medium'>Lists</p>
                         <div className='relative gap-3 mr-2'>
                             <div onClick={(e) => {
                                 e.stopPropagation()

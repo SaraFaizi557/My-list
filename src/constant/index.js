@@ -1,4 +1,4 @@
-import { CalendarDays, ChevronsRight, ListCheck, LogOut, SlidersHorizontal, StickyNote } from "lucide-react";
+import { CalendarDays, ChevronsRight, ListCheck, SlidersHorizontal, StickyNote } from "lucide-react";
 
 export const tasks = [
     {
@@ -17,23 +17,20 @@ export const tasks = [
         id: 3,
         title: "Calendar",
         Icon: CalendarDays,
+        link: "/calendar",
     },
     {
         id: 4,
-        title: "Sticky Wall",
+        title: "Notes",
         Icon: StickyNote,
+        link: "/notes",
     },
     {
         id: 5,
         title: "Settings",
         Icon: SlidersHorizontal,
+        link: "/settings",
     },
-    {
-        id: 6,
-        title: "Sign out",
-        Icon: LogOut,
-    },
-
 ]
 
 export const palette = [

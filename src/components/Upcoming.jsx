@@ -1,7 +1,9 @@
-import { CalendarFold, Check, ChevronRight, Plus, TextAlignJustify } from 'lucide-react'
+import { CalendarFold, Check, ChevronDown, ChevronRight, Plus, TextAlignJustify } from 'lucide-react'
 import React, { useEffect, useState } from 'react'
+import { dueDate } from '../constant'
 
-const Upcoming = ({ setOpenMobileMenu, setAddList, addTask, taskNum, randomColor, lists }) => {
+const Upcoming = ({ setOpenMobileMenu, setAddList, addTask, taskNum, randomColor, lists, dateMenu, setDateMenu, openlists, setOpenlists, setDate, date, selectedName, setSelectedName }) => {
+  const [taskSetting, setTaskSetting] = useState(false)
   const [complete, setComplete] = useState(() => {
     return JSON.parse(localStorage.getItem("complete") || "{}")
   })
@@ -33,9 +35,12 @@ const Upcoming = ({ setOpenMobileMenu, setAddList, addTask, taskNum, randomColor
             const color = list ? randomColor(list.name) : "transparent";
 
             return (
-              <div className='flex flex-col gap-3 py-2 border-b-2 border-(--Border)/15'>
+              <div key={task.id} onClick={() => {
+                setTaskSetting((prev) => !prev)
+              }} className='flex flex-col gap-3 py-2 pr-2 border-b-2 border-(--Border)/15 hover:bg-(--Border)/60 transition-all duration-400 rounded'>
                 <div className='flex items-center justify-between'>
-                  <div key={task.id} onClick={() => {
+                  <div onClick={(e) => {
+                    e.stopPropagation()
                     setComplete(prev => ({
                       ...prev,
                       [task.id]: !prev[task.id],
@@ -48,7 +53,7 @@ const Upcoming = ({ setOpenMobileMenu, setAddList, addTask, taskNum, randomColor
                   </div>
                   <ChevronRight strokeWidth={2.5} className='w-5 h-5 shrink-0 text-(--Text-Primary)/60 cursor-pointer' />
                 </div>
-                <div className='flex items-center gap-8 pl-11'>
+                <div className='flex items-center gap-4 sm:gap-8 pl-11'>
                   <div className='flex items-center gap-2'>
                     <CalendarFold className='w-4 h-4 shrink-0 fill-(--Text-Primary)/70 text-(--Border)' />
                     <p className='text-(--Text-Primary)/80 mr-3 text-sm group-hover:text-(--Text-Primary)/90 transition-all duration-300 capitalize'>{task.dueDate}</p>
@@ -63,9 +68,10 @@ const Upcoming = ({ setOpenMobileMenu, setAddList, addTask, taskNum, randomColor
           })}
         </div>
       </div>
-      <div className='hidden lg:flex bg-(--Surface) w-[50vw] rounded-lg px-5 py-4'>
+      {taskSetting && <div className='hidden lg:flex flex-col gap-7 bg-(--Surface) w-[40vw] rounded-lg px-5 py-4'>
         <h3 className='text-(--Text-Primary)/70 text-xl font-bold'>Task:</h3>
-      </div>
+        <input type="text" className='w-full px-3 py-1.5 text-(--Text-Primary)/70 font-medium text-md bg-(--Border)/20 rounded-md outline-none' />
+      </div>}
     </>
   )
 }
