@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=TikTok+Sans:opsz,wght@12..36,300..900&display=swap');
 @import "tailwindcss";
 
 :root {
-  --Luckiest-family: "Luckiest Guy", cursive;
+  --Luckiest-family: "Caveat", cursive;
   --TikTok-family: "TikTok Sans", sans-serif;
 }
 
@@ -24,7 +24,7 @@
   --Text-Primary: #FFFFFF;
   --Text-Secondary: #A1A1AA;
   --Divider: #262626;
-  --Red: #ff4a4ad0;
+  --Red: #fb5f5fd0;
 }
 
 #right {

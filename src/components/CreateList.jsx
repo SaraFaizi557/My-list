@@ -42,9 +42,9 @@ const CreateList = ({ createList, setCreateList, inputValue, setInputValue, setL
             setCreateList(false)
         }} className='absolute left-0 top-0 w-full h-full px-5 py-3 flex items-center justify-center bg-(--Border)/55 backdrop-blur-xs'>
             <div onClick={(e) => e.stopPropagation()} className="w-full sm:w-100 h-fit p-3 flex flex-col gap-4 rounded-xl bg-(--Border) border border-(--Border)/90 shadow inset-0 transition-all duration-200 ease-out">
-                <h5 className='font-medium text-(--Text-Primary) text-md'>Create list</h5>
+                <h5 className='font-medium text-(--Text-Primary) text-md'>Create tag</h5>
                 <div className='flex flex-col gap-2.5'>
-                    <p className='text-(--Text-Primary)/80 text-sm'>Enter a name for your list</p>
+                    <p className='text-(--Text-Primary)/80 text-sm'>Enter a name for your tag</p>
                     <div className='flex flex-col'>
                         <input ref={inputRef} onKeyDown={(e) => e.key === "Enter" && addItem()} onChange={(e) => {
                             setInputValue(e.target.value)
@@ -57,7 +57,7 @@ const CreateList = ({ createList, setCreateList, inputValue, setInputValue, setL
                                 setError3(true)
                             }
                         }} type="text" value={inputValue} placeholder='List name' className={`${error || error2 || error3 ? "border border-(--Red)/80" : ""} bg-(--Surface)/15 outline-none rounded-lg px-2.5 py-1.5 text-(--Text-Primary)/90`} />
-                        {error && <p className='text-(--Red)/85 text-sm ml-1'>List name is required</p>}
+                        {error && <p className='text-(--Red)/85 text-sm ml-1'>Tag name is required</p>}
                         {error2 && <p className='text-(--Red)/85 text-sm ml-1'>This name already exists</p>}
                         {error3 && <p className='text-(--Red)/85 text-sm ml-1'>Name must not exceed 15 characters</p>}
                     </div>

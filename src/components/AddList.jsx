@@ -60,7 +60,7 @@ const AddList = ({ lists, randomColor, setAddList, taskValue, setTaskValue, addT
                 </div>
                 <div className='flex flex-col gap-4 w-full sm:w-75'>
                     <div className='flex items-center justify-between ml-2'>
-                        <p className='text-(--Text-Primary)/80 text-sm font-medium'>Lists</p>
+                        <p className='text-(--Text-Primary)/80 text-sm font-medium'>Tags</p>
                         <div className='relative gap-3 mr-2'>
                             <div onClick={(e) => {
                                 e.stopPropagation()

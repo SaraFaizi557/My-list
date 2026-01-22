@@ -7,8 +7,8 @@ const Notes = ({ setOpenMobileMenu }) => {
         <TextAlignJustify onClick={() => {
           setOpenMobileMenu((prev) => !prev)
         }} className='flex lg:hidden w-5 h-5 cursor-pointer text-(--Text-Primary)' />
-        <h3 className='text-(--Text-Primary) text-2xl font-bold'>Notes</h3>
-        <div className='bg-(--Surface)/60 rounded px-3 py-0.5 text-2xl font-semibold text-(--Text-Primary)'>
+        <h3 className='text-(--Text-Primary) text-xl font-bold'>Notes</h3>
+        <div className='bg-(--Surface)/60 rounded px-3 py-0.5 text-xl font-semibold text-(--Text-Primary)'>
           5
         </div>
       </div>

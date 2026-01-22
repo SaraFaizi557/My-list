@@ -7,5 +7,6 @@ import Today from "./Today";
 import Calendar from "./Calendar";
 import Notes from "./Notes";
 import Settings from "./Settings";
+import TaskSetting from "./TaskSetting";
 
-export { Sidebar, MobileSidebar, CreateList, Upcoming, AddList, Today, Calendar, Notes, Settings }
+export { Sidebar, MobileSidebar, CreateList, Upcoming, AddList, Today, Calendar, Notes, Settings, TaskSetting }
