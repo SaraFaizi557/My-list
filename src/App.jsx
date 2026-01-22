@@ -10,6 +10,7 @@ const App = () => {
   const [taskValue, setTaskValue] = useState("")
   const [dateMenu, setDateMenu] = useState(false)
   const [openlists, setOpenlists] = useState(false)
+  const [theme, setTheme] = useState(() => localStorage.getItem("theme") ?? "system")
   const [lists, setLists] = useState(() => {
     return JSON.parse(localStorage.getItem("lists") || "[]");
   });
@@ -51,8 +52,16 @@ const App = () => {
     localStorage.setItem("taskNum", JSON.stringify(taskNum))
   }, [taskNum])
 
+  useEffect(() => {
+    localStorage.setItem("theme", theme)
+
+    const effective = theme === "system" ? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light") : theme
+    document.documentElement.classList.toggle("dark", effective === "dark")
+
+  }, [theme])
+
   return (
-    <main className='light w-screen flex h-screen bg-(--Background) p-3'>
+    <main className='w-screen flex h-screen bg-(--Background) p-3'>
       <div className='w-fit relative'>
         <Sidebar createList={createList} setCreateList={setCreateList} lists={lists} randomColor={randomColor} />
         <MobileSidebar createList={createList} setCreateList={setCreateList} lists={lists} randomColor={randomColor} openMobileMenu={openMobileMenu} setOpenMobileMenu={setOpenMobileMenu} />
@@ -67,7 +76,7 @@ const App = () => {
           <Route path='/today' element={<Today setOpenMobileMenu={setOpenMobileMenu} />} />
           <Route path='/calendar' element={<Calendar setOpenMobileMenu={setOpenMobileMenu} />} />
           <Route path='/notes' element={<Notes setOpenMobileMenu={setOpenMobileMenu} />} />
-          <Route path='/settings' element={<Settings setOpenMobileMenu={setOpenMobileMenu} />} />
+          <Route path='/settings' element={<Settings setOpenMobileMenu={setOpenMobileMenu} setTheme={setTheme} />} />
         </Routes>
       </div>
     </main>

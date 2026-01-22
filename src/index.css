@@ -7,7 +7,7 @@
   --TikTok-family: "TikTok Sans", sans-serif;
 }
 
-.light {
+:root {
   --Background: #FFFFFF;
   --Surface: #F8FAFC;
   --Border: #E5E7EB;

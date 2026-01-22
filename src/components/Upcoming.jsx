@@ -4,6 +4,13 @@ import { dueDate } from '../constant'
 
 const Upcoming = ({ setOpenMobileMenu, setAddList, addTask, taskNum, randomColor, lists, dateMenu, setDateMenu, openlists, setOpenlists, setDate, date, selectedName, setSelectedName }) => {
   const [taskSetting, setTaskSetting] = useState(false)
+  const [selectedTaskId, setSelectedTaskId] = useState(null)
+  const selectedTask = addTask.find(t => t.id === selectedTaskId) || null
+  const [draft, setDraft] = useState({
+    task: "",
+    listId: "",
+    dueDate: "",
+  })
   const [complete, setComplete] = useState(() => {
     return JSON.parse(localStorage.getItem("complete") || "{}")
   })
@@ -11,6 +18,17 @@ const Upcoming = ({ setOpenMobileMenu, setAddList, addTask, taskNum, randomColor
   useEffect(() => {
     localStorage.setItem("complete", JSON.stringify(complete))
   }, [complete])
+
+  useEffect(() => {
+    if (!selectedTask) return;
+
+    setDraft({
+      task: selectedTask.task,
+      listId: selectedTask.listId,
+      dueDate: selectedTask.dueDate,
+    })
+
+  }, [selectedTaskId])
 
   return (
     <>
@@ -36,7 +54,8 @@ const Upcoming = ({ setOpenMobileMenu, setAddList, addTask, taskNum, randomColor
 
             return (
               <div key={task.id} onClick={() => {
-                setTaskSetting((prev) => !prev)
+                setSelectedTaskId(task.id)
+                setTaskSetting(true)
               }} className='flex flex-col gap-3 py-2 pr-2 border-b-2 border-(--Border)/15 hover:bg-(--Border)/60 transition-all duration-400 rounded'>
                 <div className='flex items-center justify-between'>
                   <div onClick={(e) => {
@@ -55,12 +74,12 @@ const Upcoming = ({ setOpenMobileMenu, setAddList, addTask, taskNum, randomColor
                 </div>
                 <div className='flex items-center gap-4 sm:gap-8 pl-11'>
                   <div className='flex items-center gap-2'>
-                    <CalendarFold className='w-4 h-4 shrink-0 fill-(--Text-Primary)/70 text-(--Border)' />
-                    <p className='text-(--Text-Primary)/80 mr-3 text-sm group-hover:text-(--Text-Primary)/90 transition-all duration-300 capitalize'>{task.dueDate}</p>
+                    <CalendarFold className='w-4 h-4 shrink-0 fill-(--Text-Primary)/40 text-(--Border)' />
+                    <p className='text-(--Text-Primary)/50 mr-3 text-sm group-hover:text-(--Text-Primary)/90 transition-all duration-300 capitalize'>{task.dueDate}</p>
                   </div>
                   <div className='flex items-center gap-2'>
                     <div className='w-3 h-3 rounded shrink-0' style={{ backgroundColor: color }}></div>
-                    <p className='text-(--Text-Primary)/80 mr-3 text-sm group-hover:text-(--Text-Primary)/90 transition-all duration-300 capitalize'>{task.listName}</p>
+                    <p className='text-(--Text-Primary)/70 mr-3 text-sm group-hover:text-(--Text-Primary)/90 transition-all duration-300 capitalize'>{task.listName}</p>
                   </div>
                 </div>
               </div>
@@ -68,9 +87,16 @@ const Upcoming = ({ setOpenMobileMenu, setAddList, addTask, taskNum, randomColor
           })}
         </div>
       </div>
-      {taskSetting && <div className='hidden lg:flex flex-col gap-7 bg-(--Surface) w-[40vw] rounded-lg px-5 py-4'>
-        <h3 className='text-(--Text-Primary)/70 text-xl font-bold'>Task:</h3>
-        <input type="text" className='w-full px-3 py-1.5 text-(--Text-Primary)/70 font-medium text-md bg-(--Border)/20 rounded-md outline-none' />
+      {taskSetting && <div className='hidden lg:flex flex-col justify-between bg-(--Surface) w-[40vw] rounded-lg px-5 py-4'>
+        <div className='flex flex-col gap-7'>
+          <h3 className='text-(--Text-Primary)/70 text-xl font-bold'>Task:</h3>
+          <input value={draft.task} onChange={(e) => setDraft(d => ({ ...d, task: e.target.value }))} type="text" className='w-full px-3 py-1.5 text-(--Text-Primary)/70 font-medium text-md bg-(--Border)/20 rounded-md outline-none' />
+        </div>
+        <div className='flex items-center gap-4 justify-between'>
+          <button className='border border-(--Text-Secondary)/20 rounded-md py-2 w-full text-md font-medium text-(--Text-Primary) hover:text-(--Red) hover:border-(--Red)/40 cursor-pointer transition-all duration-300 active:scale-96'>Delete Task</button>
+          <button onClick={() => {
+          }} className='rounded-md py-2 w-full text-md font-medium text-(--Text-Primary) bg-[#EAB308] hover:bg-[#EAB308]/95 cursor-pointer transition-all duration-400 active:scale-96'>Save Changes</button>
+        </div>
       </div>}
     </>
   )
