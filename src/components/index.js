@@ -4,9 +4,8 @@ import CreateList from "./CreateList";
 import Upcoming from "./Upcoming";
 import AddList from "./AddList";
 import Today from "./Today";
-import Calendar from "./Calendar";
 import Notes from "./Notes";
 import Settings from "./Settings";
-import TaskSetting from "./TaskSetting";
+import CreateTodayTask from "./CreateTodayTask";
 
-export { Sidebar, MobileSidebar, CreateList, Upcoming, AddList, Today, Calendar, Notes, Settings, TaskSetting }
+export { Sidebar, MobileSidebar, CreateList, Upcoming, AddList, Today, Notes, Settings, CreateTodayTask }
