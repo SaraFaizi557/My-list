@@ -46,11 +46,10 @@ const CreateTodayTask = ({ lists, randomColor, selectedName, addTodayTask, setAd
                 <h5 className='font-medium text-(--Text-Primary) text-md'>Create Task</h5>
                 <div className='flex flex-col'>
                     <input ref={thirdInputRef} value={todayTaskValue} onKeyDown={(e) => e.key === "Enter" && addTasks()} onChange={(e) => {
-
                         setTodayTaskValue(e.target.value)
                         setError(false)
                         setError2(false)
-                    }} type="text" placeholder='Enter task title' className={` bg-(--Surface)/15 outline-none rounded-lg px-2.5 py-1.5 text-(--Text-Primary)/90`} />
+                    }} type="text" placeholder='Enter task title' className={`${error || error2 ? "border border-(--Red)/80" : ""} bg-(--Surface)/15 outline-none rounded-lg px-2.5 py-1.5 text-(--Text-Primary)/90`} />
                     {error && <p className='text-(--Red)/85 text-sm ml-1'>Task is required</p>}
                     {error2 && <p className='text-(--Red)/85 text-sm ml-1'>This task already exists</p>}
                 </div>

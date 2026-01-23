@@ -63,7 +63,7 @@ const Today = ({ lists, setOpenMobileMenu, setTodayTask, addTodayTask, setAddTod
                 </div>}
               </div>
               <div className='flex items-center gap-4 sm:gap-8 pl-11'>
-                <p className='mr-3 px-2 py-0.5 rounded-sm text-xs font-medium text-(--Background) transition-all duration-300 capitalize' style={{ backgroundColor: color }}>{task.listName}</p>
+                <p className='mr-3 px-2 py-0.5 rounded-sm text-xs font-medium text-(--Background) transition-all duration-300 capitalize cursor-pointer' style={{ backgroundColor: color }}>{task.listName}</p>
               </div>
             </div>
           )

@@ -1,4 +1,4 @@
-import { CalendarFold, Check, EllipsisVertical, Plus, TextAlignJustify } from 'lucide-react'
+import { CalendarClock, Check, EllipsisVertical, Plus, TextAlignJustify } from 'lucide-react'
 import { useEffect, useState } from 'react'
 
 const Upcoming = ({ setOpenMobileMenu, setAddList, addTask, randomColor, lists, setSelectedTaskId, setAddTask }) => {
@@ -67,10 +67,10 @@ const Upcoming = ({ setOpenMobileMenu, setAddList, addTask, randomColor, lists, 
                 </div>
                 <div className='flex items-center gap-4 sm:gap-8 pl-11'>
                   <div className='flex items-center gap-2'>
-                    <CalendarFold className='w-4 h-4 shrink-0 text-(--Text-Primary)/50' />
+                    <CalendarClock className='w-4 h-4 shrink-0 text-(--Text-Primary)/50' />
                     <p className='text-(--Text-Primary)/50 mr-3 text-sm group-hover:text-(--Text-Primary)/90 transition-all duration-300 capitalize'>{task.dueDate}</p>
                   </div>
-                  <p className='mr-3 px-2 py-0.5 rounded-sm text-xs font-medium text-(--Background) transition-all duration-300 capitalize' style={{ backgroundColor: color }}>{task.listName}</p>
+                  <p className='mr-3 px-2 py-0.5 rounded-sm text-xs font-medium text-(--Background) transition-all duration-300 capitalize cursor-pointer' style={{ backgroundColor: color }}>{task.listName}</p>
                 </div>
               </div>
             )
