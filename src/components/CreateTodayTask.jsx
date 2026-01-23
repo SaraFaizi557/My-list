@@ -1,7 +1,7 @@
 import { ChevronDown } from "lucide-react"
 import { useState } from "react"
 
-const CreateTodayTask = ({ lists, randomColor, selectedName, addTodayTask, setAddTodayTask, todayTaskValue, setTodayTaskValue, openlists, setOpenlists, setTodayTask, setSelectedName }) => {
+const CreateTodayTask = ({ lists, randomColor, selectedName, addTodayTask, setAddTodayTask, todayTaskValue, setTodayTaskValue, openlists, setOpenlists, setTodayTask, setSelectedName, thirdInputRef }) => {
 
     const [error, setError] = useState(false)
     const [error2, setError2] = useState(false)
@@ -45,7 +45,7 @@ const CreateTodayTask = ({ lists, randomColor, selectedName, addTodayTask, setAd
             }} className="w-full sm:w-110 h-fit p-3 flex flex-col gap-4 rounded-xl bg-(--Border) border border-(--Border)/90 shadow inset-0 transition-all duration-200 ease-out">
                 <h5 className='font-medium text-(--Text-Primary) text-md'>Create Task</h5>
                 <div className='flex flex-col'>
-                    <input value={todayTaskValue} onKeyDown={(e) => e.key === "Enter" && addTasks()} onChange={(e) => {
+                    <input ref={thirdInputRef} value={todayTaskValue} onKeyDown={(e) => e.key === "Enter" && addTasks()} onChange={(e) => {
 
                         setTodayTaskValue(e.target.value)
                         setError(false)

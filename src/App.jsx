@@ -36,6 +36,7 @@ const App = () => {
   })
   const inputRef = useRef(null)
   const secInputRef = useRef(null)
+  const thirdInputRef = useRef(null)
 
   const randomColor = (str) => {
     let hash = 0
@@ -48,6 +49,7 @@ const App = () => {
   useEffect(() => {
     if (createList) inputRef.current?.focus()
     if (addList) secInputRef.current?.focus()
+    if (todayTask) thirdInputRef.current?.focus()
   })
 
   useEffect(() => {
@@ -89,7 +91,7 @@ const App = () => {
       </div>
       <CreateList createList={createList} setCreateList={setCreateList} inputValue={inputValue} setInputValue={setInputValue} lists={lists} setLists={setLists} inputRef={inputRef} />
       {addList && <AddList lists={lists} setAddList={setAddList} randomColor={randomColor} taskValue={taskValue} setTaskValue={setTaskValue} addTask={addTask} setAddTask={setAddTask} date={date} setDate={setDate} secInputRef={secInputRef} dateMenu={dateMenu} setDateMenu={setDateMenu} openlists={openlists} setOpenlists={setOpenlists} selectedName={selectedName} setSelectedName={setSelectedName} />}
-      {todayTask && <CreateTodayTask lists={lists} randomColor={randomColor} selectedName={selectedName} addTodayTask={addTodayTask} setAddTodayTask={setAddTodayTask} todayTaskValue={todayTaskValue} setTodayTaskValue={setTodayTaskValue} openlists={openlists} setOpenlists={setOpenlists} setTodayTask={setTodayTask} setSelectedName={setSelectedName} />}
+      {todayTask && <CreateTodayTask thirdInputRef={thirdInputRef} lists={lists} randomColor={randomColor} selectedName={selectedName} addTodayTask={addTodayTask} setAddTodayTask={setAddTodayTask} todayTaskValue={todayTaskValue} setTodayTaskValue={setTodayTaskValue} openlists={openlists} setOpenlists={setOpenlists} setTodayTask={setTodayTask} setSelectedName={setSelectedName} />}
       <div className='w-full h-full flex justify-between lg:ml-6'>
         <Routes>
           <Route path='/'

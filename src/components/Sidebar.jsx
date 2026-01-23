@@ -50,16 +50,16 @@ const Sidebar = ({ setCreateList, lists, setLists, randomColor }) => {
                                     </div>
                                     {openMenu && <p className='text-(--Text-Primary) text-sm capitalize'>{list.name}</p>}
                                 </div>
-                                <EllipsisVertical onClick={(e) => {
+                                {openMenu && <EllipsisVertical onClick={(e) => {
                                     e.stopPropagation()
                                     setDropDown((prev) => (prev === list.id ? null : list.id))
-                                }} strokeWidth={2.5} className='w-4 h-4 shrink-0 text-(--Text-Primary)/60 cursor-pointer' />
+                                }} strokeWidth={2.5} className='w-4 h-4 shrink-0 text-(--Text-Primary)/60 cursor-pointer' />}
                                 {dropDown === list.id && <div className='absolute right-8 mt-15 bg-(--Background) p-1 rounded-md shadow'>
                                     <div onClick={(e) => {
                                         e.stopPropagation()
                                         setLists(prev => prev.filter(t => t.id !== list.id))
                                     }} className='cursor-pointer px-2 py-1 rounded text-sm font-medium text-(--Red) hover:bg-(--Red)/10'>
-                                        Deleat Task
+                                        Deleat Tag
                                     </div>
                                 </div>}
                             </div>

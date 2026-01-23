@@ -61,7 +61,7 @@ const MobileSidebar = ({ openMobileMenu, setOpenMobileMenu, setCreateList, setLi
                                             e.stopPropagation()
                                             setLists(prev => prev.filter(t => t.id !== list.id))
                                         }} className='cursor-pointer px-2 py-1 rounded text-sm font-medium text-(--Red) hover:bg-(--Red)/10'>
-                                            Deleat Task
+                                            Deleat Tag
                                         </div>
                                     </div>}
                                 </div>
