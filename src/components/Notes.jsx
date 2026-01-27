@@ -22,7 +22,7 @@ const Notes = ({ setOpenMobileMenu, setOpenCreateNote }) => {
         <div className='flex w-full md:w-110 hover:-translate-y-2 transition-all duration-400 flex-col gap-3 rounded-lg px-5 py-4 border border-(--Border)/50'>
           <div className='flex items-center gap-3'>
             <div className='bg-[#f3b808] w-2 h-2 rounded-full'></div>
-            <h3 className='text-md text-(--Text-Primary) font-medium'>Thi is title</h3>
+            <h3 className='text-md text-(--Text-Primary) font-medium'>Lorem ipsum dolor</h3>
           </div>
           <p className='ml-3 text-md text-(--Text-Primary)/80 mb-3'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatibus sit commodi necessitatibus praesentium Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perferendis quas possimus consectetur voluptate? Ullam quis voluptatibus voluptatum repudiandae dolor velit, voluptatem nam cumque assumenda quia sit ab saepe id corporis!</p>
           <div className='px-2 py-0.5 rounded-sm bg-red-400 w-fit cursor-pointer'>
